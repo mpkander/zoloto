@@ -1,0 +1,11 @@
+export 'src/default_app_wrapper.dart';
+export 'src/expect_match_golden.dart' show expectMatchGolden;
+export 'src/expect_match_test_environments.dart' show expectMatchTestEnvironments;
+export 'src/font_loader.dart' show loadFonts;
+export 'src/precache_assets.dart' show defaultPrecacheAssets;
+export 'src/pump_golden_widget.dart' show pumpGoldenWidget;
+export 'src/test_golden_widgets.dart' show testGoldenWidgets;
+export 'src/zoloto.dart';
+export 'src/zoloto_config.dart';
+export 'src/zoloto_file_comparator.dart';
+export 'src/test_environment.dart';
