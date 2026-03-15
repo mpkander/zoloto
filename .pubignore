@@ -1,6 +1,8 @@
 AGENTS.md
 spec/
 .agents/
+build/
+zoloto.iml
 
 example/android/
 example/ios/
