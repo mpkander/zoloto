@@ -96,7 +96,10 @@ class TestEnvironment {
   }
 }
 
-/// Built-in [TestEnvironment] presets for common device profiles.
+/// Built-in [TestEnvironment] presets for popular device profiles.
+///
+/// Use these directly or call [TestEnvironment.copyWith] to tweak a
+/// single field (e.g. switch brightness to dark).
 class TestEnvironments {
   /// iPhone 13 Mini — 5.4" notch display, @3x.
   static const TestEnvironment iphone13Mini = TestEnvironment(

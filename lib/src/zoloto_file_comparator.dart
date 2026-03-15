@@ -3,7 +3,15 @@ import 'dart:developer';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_test/flutter_test.dart';
 
+/// A [LocalFileComparator] that supports a configurable pixel-diff
+/// tolerance.
+///
+/// When the diff percentage is within [toleranceThreshold], the test
+/// passes; otherwise a [FlutterError] is thrown with failure images.
 class ZolotoFileComparator extends LocalFileComparator {
+  /// Maximum allowed fraction of differing pixels (0.0–1.0).
+  ///
+  /// `0` means pixel-perfect; `0.005` allows up to 0.5% difference.
   final double toleranceThreshold;
 
   /// Creates a comparator whose [basedir] equals [testFile]'s directory.

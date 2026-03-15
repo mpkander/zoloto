@@ -1,7 +1,12 @@
 name: zoloto
-description: Golden-test package
+description: A set of utilities for simplifying golden (screenshot) test writing in Flutter.
 version: 0.0.1
-homepage:
+homepage: https://github.com/mpkander/zoloto
+repository: https://github.com/mpkander/zoloto
+topics:
+  - testing
+  - golden-tests
+  - screenshots
 
 environment:
   sdk: ^3.8.0

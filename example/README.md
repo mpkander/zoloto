@@ -1,3 +1,5 @@
-# example
+# Zoloto Example
 
-A new Flutter project.
+A demo banking app that shows how to use [zoloto](https://pub.dev/packages/zoloto) for golden testing.
+
+

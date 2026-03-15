@@ -1,0 +1,9 @@
+AGENTS.md
+spec/
+.agents/
+
+example/android/
+example/ios/
+example/build/
+example/assets/fonts/
+example/assets/images/

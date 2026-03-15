@@ -138,7 +138,7 @@ test/
 
 Here is what the generated golden looks like:
 
-![Golden example](docs/assets/golden-example.png)
+![Golden example](doc/assets/golden-example.png)
 
 ### Step 5 — Make a change
 
@@ -175,7 +175,7 @@ Flutter generates comparison images in a `failures/` folder next to the test:
 
 | Masked diff | Isolated diff |
 |:-:|:-:|
-| ![Masked diff](docs/assets/failure-masked-diff.png) | ![Isolated diff](docs/assets/failure-isolated-diff.png) |
+| ![Masked diff](doc/assets/failure-masked-diff.png) | ![Isolated diff](doc/assets/failure-isolated-diff.png) |
 
 To accept the new look, run `flutter test --update-goldens` again.
 

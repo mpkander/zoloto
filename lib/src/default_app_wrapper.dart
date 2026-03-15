@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+/// A function that wraps a widget (typically in a [MaterialApp] shell)
+/// before it is pumped in a golden test.
 typedef WidgetWrapper = Widget Function(Widget);
 
 /// Creates a [MaterialApp] shell for golden tests.

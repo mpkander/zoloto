@@ -5,35 +5,51 @@ import 'package:zoloto/src/precache_assets.dart';
 import 'package:zoloto/src/test_environment.dart';
 import 'package:zoloto/src/zoloto_file_comparator.dart';
 
+/// Factory that creates a [LocalFileComparator] for the given [testFile] URI.
 typedef ComparatorFactory = LocalFileComparator Function(Uri testFile);
 
+/// Factory that produces a [WidgetWrapper] (e.g. a [MaterialApp] shell)
+/// used to wrap every widget under test.
 typedef WidgetWrapperFactory = WidgetWrapper Function();
 
+/// Converts a golden name and an optional [TestEnvironment] into a
+/// relative file path (e.g. `'button.iphone_13_mini.png'`).
 typedef TestPathFactory = String Function(
   String name,
   TestEnvironment? testEnv,
 );
 
+/// Returns `true` when golden assertions should be skipped
+/// (e.g. on a CI host where rendering is non-deterministic).
 typedef SkipGoldenAssertion = bool Function();
 
 /// Called before each golden screenshot to ensure images are decoded.
 typedef PrecacheAssets = Future<void> Function(WidgetTester tester);
 
+/// Custom pump strategy passed to [expectMatchGolden] /
+/// [expectMatchTestEnvironments] to replace the default `pumpAndSettle`.
 typedef CustomPump = Future<void> Function(WidgetTester tester);
 
+/// Default [TestPathFactory]: `'name.png'` or `'name.env.png'`.
 String defaultTestPathFactory(String name, TestEnvironment? testEnv) {
   if (testEnv == null) return '$name.png';
   return '$name.${testEnv.name}.png';
 }
 
+/// Default [ComparatorFactory]: creates a [ZolotoFileComparator]
+/// with zero tolerance.
 LocalFileComparator defaultComparator(Uri testFile) {
   return ZolotoFileComparator(testFile);
 }
 
+/// Default [WidgetWrapperFactory]: calls [defaultAppWrapper]
+/// with no customization.
 WidgetWrapper defaultAppWrapperFactory() {
   return defaultAppWrapper();
 }
 
+/// Default [SkipGoldenAssertion]: always returns `false`
+/// (assertions are never skipped).
 bool defaultSkipGoldenAssertion() {
   return false;
 }
@@ -92,9 +108,19 @@ class ZolotoConfig {
 
   /// Called before each golden screenshot to precache images.
   ///
-  /// Override to customise asset loading (e.g. load network images via mocks).
+  /// Override to customize asset loading (e.g. load network images via mocks).
   final PrecacheAssets precacheAssets;
 
+  /// Creates a config where every parameter has a sensible default.
+  ///
+  /// Override only the parts you need:
+  ///
+  /// ```dart
+  /// ZolotoConfig.defaultSetup(
+  ///   enableRealShadows: false,
+  ///   goldenFolderName: 'snapshots',
+  /// )
+  /// ```
   const ZolotoConfig.defaultSetup({
     this.comparatorFactory = defaultComparator,
     this.appWrapperFactory = defaultAppWrapperFactory,
@@ -108,6 +134,10 @@ class ZolotoConfig {
     this.precacheAssets = defaultPrecacheAssets,
   });
 
+  /// Creates a config with all parameters required.
+  ///
+  /// Prefer [ZolotoConfig.defaultSetup] unless you need
+  /// full control over every option.
   const ZolotoConfig({
     required this.comparatorFactory,
     required this.appWrapperFactory,
